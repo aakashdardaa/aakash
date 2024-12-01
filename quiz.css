@@ -1,0 +1,183 @@
+:root {
+    /* Core Colors */
+    --color-primary: #008080;
+    --color-primary-dark: #005f5f;
+    --color-accent: #4ecdc4;
+    --color-white: #ffffff;
+    --color-text-primary: #2c3e50;
+    --color-text-secondary: #6c757d;
+
+    /* Backgrounds */
+    --background-gradient: linear-gradient(135deg, #d0e4e2, #008080);
+
+    /* Typography */
+    --font-primary: 'Inter', sans-serif;
+    --font-size-base: 16px;
+    --font-size-large: 1.25rem;
+    --font-weight-normal: 400;
+    --font-weight-bold: 600;
+
+    /* Spacing & Layout */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+
+    /* Effects */
+    --border-radius: 12px;
+    --shadow-subtle: 0 4px 15px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.12);
+    --transition-smooth: all 0.3s ease-in-out;
+}
+
+/* Base Reset & Normalization */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-primary);
+    background: var(--background-gradient);
+    color: var(--color-text-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: var(--spacing-lg);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+}
+
+/* Title Styling */
+h1 {
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-large);
+}
+
+/* Container Design */
+.container {
+    background: var(--color-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-subtle);
+    width: 100%;
+    max-width: 600px;
+    padding: var(--spacing-lg);
+    overflow: hidden;
+    position: relative;
+    transition: var(--transition-smooth);
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+}
+
+.container:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-8px);
+}
+
+/* Answers Section */
+.answers {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+/* Option Button Styling */
+.option-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-md);
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-base);
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+}
+
+.option-btn:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-4px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.option-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: var(--transition-smooth);
+}
+
+.option-btn:hover::before {
+    left: 100%;
+}
+
+/* Progress Bar */
+progress {
+    width: 100%;
+    height: 10px;
+    border-radius: calc(var(--border-radius) / 2);
+    appearance: none;
+    overflow: hidden;
+}
+
+progress::-webkit-progress-bar {
+    background-color: rgba(78, 205, 196, 0.2);
+}
+
+progress::-webkit-progress-value {
+    background: linear-gradient(45deg, var(--color-primary), var(--color-accent));
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: var(--spacing-md);
+    }
+
+    .option-btn {
+        font-size: calc(var(--font-size-base) * 0.9);
+        padding: var(--spacing-sm);
+    }
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+.text-muted {
+    color: var(--color-text-secondary);
+}
+
+/* Accessibility Focus */
+:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 3px;
+}
